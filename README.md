@@ -75,52 +75,23 @@ At the final cycle:
 This confirms:
 mem[100] = 25
 
-which matches the expected program result.
-
----
-
-## 📊 Testbench Waveform
-
-The waveform below shows the correct execution of the multicycle processor and the final memory write operation.
-
-![Success Waveform](./basari.png)
-
----
-
 ## 🧾 Controller Testbench Result (HW2)
 
-![Controller Result](./controllertberror.png)
+The controller was verified independently using its dedicated testbench.
+
+![Controller TB Result](./controllertberror.png)
 
 ---
 
-## 📈 Observations
+## 📊 Multicycle Processor Waveform (Pre3)
 
-- The FSM transitions correctly between fetch, decode, execute, memory, and writeback stages.
-- ALU operations and immediate decoding are consistent with instruction types.
-- Correct coordination between controller and datapath is critical for proper execution.
-- The final memory write confirms end-to-end correctness.
+The waveform below shows the correct execution of the full multicycle RISC-V processor.
 
----
+At the final cycle:
+- MemWrite = 1  
+- DataAdr = 0x00000064  
+- WriteData = 0x00000019  
 
-## 🛠️ Tools Used
+This confirms correct execution.
 
-- SystemVerilog  
-- QuestaSim / ModelSim  
-- Quartus Prime Lite  
-
----
-
-## ⏱️ Time Spent
-
-- HW2 (Controller): ~1 hour  
-- Preliminary Work 3 (Integration & Debug): ~3–4 hours  
-
----
-
-## 🚀 Notes
-
-- Debugging was performed by comparing expected FSM behavior with waveform outputs.
-- Proper signal connections between controller and datapath were essential.
-- This implementation successfully passes the provided testbench (`Simulation succeeded`).
-
----
+![Processor Waveform](./basari.png)

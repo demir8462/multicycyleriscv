@@ -81,6 +81,6 @@ Waveform:
 ## ⏱️ Time
 
 - HW2: ~1 hour  
-- Pre3: ~3–4 hours  
+- Pre3: ~7–8 hours  
 
 ---

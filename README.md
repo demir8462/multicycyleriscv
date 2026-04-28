@@ -116,7 +116,7 @@ The controller was verified independently using its dedicated testbench.
 ## ⏱️ Time Spent
 
 - HW2 (Controller): ~1 hour  
-- Preliminary Work 3 (Integration & Debug): ~3–4 hours  
+- Preliminary Work 3 (Integration & Debug): ~6–7 hours  
 
 ---
 

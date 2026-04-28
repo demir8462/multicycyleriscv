@@ -62,7 +62,17 @@ A **single unified memory** is used for both instructions and data.
 
 ## 🧪 Simulation Results
 
-The full multicycle processor was simulated using the provided testbench and memory file.
+### 🔹 Controller (HW2)
+
+The controller was tested independently and passed all test cases with **0 errors**.
+
+![Controller Testbench Result](./controllertberror.png)
+
+---
+
+### 🔹 Multicycle Processor (Pre3)
+
+The full processor was simulated using the provided testbench and memory file.
 
 ### ✅ Successful Execution
 
@@ -75,24 +85,15 @@ At the final cycle:
 This confirms:
 mem[100] = 25
 
-
 which matches the expected program result.
 
 ---
 
-## 📊 Multicycle Processor Waveform (Pre3)
+## 📊 Multicycle Processor Waveform
 
-The waveform below shows the correct execution of the processor and the final successful memory write operation.
+The waveform below shows the correct execution of the processor and the final memory write operation.
 
 ![Processor Waveform](./basari.png)
-
----
-
-## 🧾 Controller Testbench Result (HW2)
-
-The controller was verified independently using its dedicated testbench.
-
-![Controller Testbench](./controllertb.png)
 
 ---
 
@@ -116,7 +117,7 @@ The controller was verified independently using its dedicated testbench.
 ## ⏱️ Time Spent
 
 - HW2 (Controller): ~1 hour  
-- Preliminary Work 3 (Integration & Debug): ~6–7 hours  
+- Preliminary Work 3 (Integration & Debug): ~3–4 hours  
 
 ---
 

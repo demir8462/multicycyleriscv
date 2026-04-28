@@ -1,24 +1,35 @@
-# ELE432 - HW2: Multicycle RISC-V Controller
+# ELE432 - HW2 + Preliminary Work 3  
+## Multicycle RISC-V Processor & Controller
+
+---
 
 ## 🎯 Objective
 
-In this homework, a multicycle RISC-V controller was designed in SystemVerilog based on the FSM architecture described in the course material.
+This work includes both:
 
-The controller includes:
-- Main FSM (Finite State Machine)
-- ALU Decoder
-- Instruction Decoder
+- **HW2:** Design of a multicycle RISC-V controller  
+- **Preliminary Work 3:** Integration of the controller with datapath and memory to build a complete multicycle RISC-V processor
+
+The design follows the multicycle architecture described in the course material and textbook.
 
 ---
 
 ## 🧠 Design Overview
 
+### 🔹 Controller (HW2)
+
+The controller is implemented using an FSM-based architecture and consists of:
+
+- Main FSM (Finite State Machine)
+- ALU Decoder (`aludec`)
+- Instruction Decoder (`instrdec`)
+
 The controller generates control signals based on:
-- Current FSM state
+- FSM state
 - Instruction fields (`op`, `funct3`, `funct7b5`)
 - ALU zero flag
 
-Main outputs:
+#### Main Outputs:
 - `ImmSrc`
 - `ALUSrcA`, `ALUSrcB`
 - `ResultSrc`
@@ -27,45 +38,89 @@ Main outputs:
 - `IRWrite`, `PCWrite`
 - `RegWrite`, `MemWrite`
 
-The design follows the multicycle control architecture described in the course textbook.
+---
+
+### 🔹 Multicycle Processor (Pre3)
+
+The processor consists of:
+
+- `controller`
+- `datapath`
+- Unified `memory`
+
+Key datapath components:
+- Program Counter (PC)
+- Instruction Register
+- Register File
+- ALU
+- Immediate Extender
+- Internal registers (A, B, ALUOut)
+
+The system uses a **single unified memory** for both instructions and data.
 
 ---
 
-## 🧪 Simulation Result
+## 🧪 Simulation Results
 
-The controller was simulated using the provided testbench and test vector file.
+The design was verified using the provided testbench and memory file.
 
-The final simulation completed successfully with: 0 error
+### ✅ Successful Execution
 
+At the final cycle:
 
-### ✅ 0 Error Result (Transcript)
+- `MemWrite = 1`
+- `DataAdr = 0x00000064` (decimal 100)
+- `WriteData = 0x00000019` (decimal 25)
 
-![Controller Result](./controllertberror.png)
+This confirms:
+mem[100] = 25
+
+which matches the expected program result.
 
 ---
 
 ## 📊 Testbench Waveform
 
-The waveform below shows the behavior of the controller signals during simulation.
+The waveform below shows the correct execution of the multicycle processor and the final memory write operation.
 
-![Controller Waveform](./controllertb.png)
+![Success Waveform](./basari.png)
+
+---
+
+## 🧾 Controller Testbench Result (HW2)
+
+![Controller Result](./controllertberror.png)
+
+---
+
+## 📈 Observations
+
+- The FSM transitions correctly between fetch, decode, execute, memory, and writeback stages.
+- ALU operations and immediate decoding are consistent with instruction types.
+- Correct coordination between controller and datapath is critical for proper execution.
+- The final memory write confirms end-to-end correctness.
 
 ---
 
 ## 🛠️ Tools Used
 
-- SystemVerilog
-- QuestaSim / ModelSim
+- SystemVerilog  
+- QuestaSim / ModelSim  
+- Quartus Prime Lite  
+
+---
+
+## ⏱️ Time Spent
+
+- HW2 (Controller): ~1 hour  
+- Preliminary Work 3 (Integration & Debug): ~3–4 hours  
 
 ---
 
 ## 🚀 Notes
 
-- The controller was debugged by comparing expected and actual outputs at each FSM state.
-- Correct ALUControl encoding and proper handling of `ImmSrc` were critical for passing all tests.
-- This controller will be used in **Lab 3** to build the complete multicycle RISC-V processor.
+- Debugging was performed by comparing expected FSM behavior with waveform outputs.
+- Proper signal connections between controller and datapath were essential.
+- This implementation successfully passes the provided testbench (`Simulation succeeded`).
 
 ---
-
-## ⏱️ Time Spent
-1 hour for the controller

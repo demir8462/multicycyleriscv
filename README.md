@@ -1,5 +1,5 @@
 # ELE432 - HW2 + Preliminary Work 3  
-## Multicycle RISC-V Processor & Controller
+## Multicycle RISC-V Controller & Processor
 
 ---
 
@@ -10,7 +10,7 @@ This work includes both:
 - **HW2:** Design of a multicycle RISC-V controller  
 - **Preliminary Work 3:** Integration of the controller with datapath and memory to build a complete multicycle RISC-V processor
 
-The design follows the multicycle architecture described in the course material and textbook.
+The design follows the multicycle architecture described in the course material.
 
 ---
 
@@ -56,13 +56,13 @@ Key datapath components:
 - Immediate Extender
 - Internal registers (A, B, ALUOut)
 
-The system uses a **single unified memory** for both instructions and data.
+A **single unified memory** is used for both instructions and data.
 
 ---
 
 ## 🧪 Simulation Results
 
-The design was verified using the provided testbench and memory file.
+The full multicycle processor was simulated using the provided testbench and memory file.
 
 ### ✅ Successful Execution
 
@@ -75,23 +75,55 @@ At the final cycle:
 This confirms:
 mem[100] = 25
 
-## 🧾 Controller Testbench Result (HW2)
 
-The controller was verified independently using its dedicated testbench.
-
-![Controller TB Result](./controllertberror.png)
+which matches the expected program result.
 
 ---
 
 ## 📊 Multicycle Processor Waveform (Pre3)
 
-The waveform below shows the correct execution of the full multicycle RISC-V processor.
-
-At the final cycle:
-- MemWrite = 1  
-- DataAdr = 0x00000064  
-- WriteData = 0x00000019  
-
-This confirms correct execution.
+The waveform below shows the correct execution of the processor and the final successful memory write operation.
 
 ![Processor Waveform](./basari.png)
+
+---
+
+## 🧾 Controller Testbench Result (HW2)
+
+The controller was verified independently using its dedicated testbench.
+
+![Controller Testbench](./controllertb.png)
+
+---
+
+## 📈 Observations
+
+- The FSM correctly transitions through fetch, decode, execute, memory, and writeback stages.
+- ALU operations and immediate decoding are consistent with instruction types.
+- Proper coordination between controller and datapath ensures correct execution.
+- The final memory write confirms end-to-end system correctness.
+
+---
+
+## 🛠️ Tools Used
+
+- SystemVerilog  
+- QuestaSim / ModelSim  
+- Quartus Prime Lite  
+
+---
+
+## ⏱️ Time Spent
+
+- HW2 (Controller): ~1 hour  
+- Preliminary Work 3 (Integration & Debug): ~3–4 hours  
+
+---
+
+## 🚀 Notes
+
+- Debugging was performed by comparing expected FSM behavior with waveform outputs.
+- Correct ALUControl encoding and proper ImmSrc selection were critical.
+- The design successfully passes the provided testbench (**Simulation succeeded**).
+
+---

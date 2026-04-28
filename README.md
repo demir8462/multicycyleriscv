@@ -1,23 +1,22 @@
 # ELE432 - HW2: Multicycle RISC-V Controller
 
-## 🎯 Objective
-In this homework, a multicycle RISC-V **controller** was designed in SystemVerilog based on the FSM architecture described in the course material.
+## Objective
+
+In this homework, a multicycle RISC-V controller was designed in SystemVerilog.
 
 The controller includes:
-- Main FSM (Finite State Machine)
+- Main FSM
 - ALU Decoder
 - Instruction Decoder
 
 ---
 
-## 🧠 Design Overview
+## Design Overview
 
-The controller generates control signals based on:
-- Current FSM state
-- Instruction fields (`op`, `funct3`, `funct7b5`)
-- ALU zero flag
+The controller generates the required multicycle control signals using the current FSM state, instruction fields, and the ALU Zero signal.
 
-Key control outputs:
+Main outputs:
+- `ImmSrc`
 - `ALUSrcA`, `ALUSrcB`
 - `ResultSrc`
 - `AdrSrc`
@@ -25,26 +24,13 @@ Key control outputs:
 - `IRWrite`, `PCWrite`
 - `RegWrite`, `MemWrite`
 
-The design follows the multicycle control architecture described in the course textbook and lecture materials.
-
 ---
 
-## 🧪 Simulation Results
+## Simulation Result
 
-### ❌ Initial Debug Phase
+The controller was simulated using the provided controller testbench and test vector file.
 
-During early testing, errors were observed due to:
-- Incorrect ALUControl encoding
-- Incorrect handling of `ImmSrc` for R-type instructions
+The final simulation completed successfully with:
 
-![Controller Test Errors](./controllertberror.png)
-
----
-
-### ✅ Final Working Version
-
-After fixing:
-- ALU decoder logic (based on Table 1)
-- Instruction decoder (`ImmSrc = xx` for R-type instructions)
-
-All test vectors passed successfully:
+```text
+40 tests completed with 0 errors
